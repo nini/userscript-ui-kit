@@ -31,8 +31,11 @@
                 border-bottom: 1px solid #222; user-select: none;
             }
             .ln-panel-header .ln-title   { font-size: 13px; font-weight: 700; color: #fff; white-space: nowrap; }
-            .ln-panel-header .ln-counter { font-size: 12px; color: #888; font-variant-numeric: tabular-nums; margin-left: auto; }
+            .ln-panel-header .ln-counter { font-size: 12px; color: #999; font-variant-numeric: tabular-nums; margin-left: auto; }
             .ln-panel-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+            /* Muted text (labels, hints, idle status): #999 on #0f0f0f is ~6.7:1, passes WCAG AA.
+               Use this instead of ad-hoc #555/#666/#888 grays for anything readable. */
+            .ln-muted { color: #999; }
             .ln-btn {
                 padding: 9px 14px; border: none; border-radius: 8px;
                 font-size: 13px; font-weight: 600; cursor: pointer;
@@ -42,15 +45,30 @@
             .ln-btn:active { transform: scale(0.97); }
             .ln-btn:disabled { cursor: not-allowed; opacity: 0.5; }
             .ln-btn:disabled:hover { opacity: 0.5; transform: none; }
-            .ln-status { font-size: 11px; color: #555; text-align: center; min-height: 16px; }
+            .ln-btn:focus-visible, .ln-collapse-btn:focus-visible, .ln-mini:focus-visible {
+                outline: 2px solid #3b82f6; outline-offset: 2px;
+            }
+            /* Emphasis scale: one primary action per panel, everything else quieter.
+               Pick ONE of these per button instead of inventing inline colors. */
+            .ln-btn-primary   { background: #2563eb; color: #fff; }
+            .ln-btn-success   { background: #16a34a; color: #fff; }
+            .ln-btn-success:disabled { background: #16341f; color: #4b6a53; }
+            .ln-btn-secondary { background: #1e293b; color: #94a3b8; border: 1px solid #334155; }
+            .ln-btn-icon      { background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 9px 11px; }
+            /* Destructive but not the primary action of the flow: outlined, not filled,
+               so it doesn't compete visually with the button people click every time. */
+            .ln-btn-danger-outline { background: transparent; color: #f87171; border: 1px solid #7f1d1d; }
+            .ln-btn-danger-outline:hover { background: rgba(239,68,68,0.1); opacity: 1; }
+            .ln-status { font-size: 11px; color: #999; text-align: center; min-height: 16px; }
             .ln-status.ok   { color: #22c55e; }
             .ln-status.err  { color: #ef4444; }
             .ln-status.info { color: #3b82f6; }
+            .ln-panel textarea:focus-visible { outline: 2px solid #3b82f6; outline-offset: 1px; }
             .ln-collapse-btn {
-                background: none; border: none; color: #555;
+                background: none; border: none; color: #999;
                 font-size: 18px; cursor: pointer; padding: 0 2px; line-height: 1;
             }
-            .ln-collapse-btn:hover { color: #aaa; }
+            .ln-collapse-btn:hover { color: #ccc; }
             .ln-mini {
                 display: none; padding: 14px 18px; cursor: pointer;
                 font-size: 18px; align-items: center; justify-content: center;
