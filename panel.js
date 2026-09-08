@@ -74,7 +74,7 @@
                 font-size: 18px; align-items: center; justify-content: center;
             }
             .ln-panel.collapsed .ln-panel-body   { display: none; }
-            .ln-panel.collapsed .ln-panel-header { border-bottom: none; }
+            .ln-panel.collapsed .ln-panel-header { display: none; }
             .ln-panel.collapsed .ln-mini         { display: flex; }
             .ln-progress-bar-wrap { height: 3px; background: #1e1e1e; overflow: hidden; }
             .ln-progress-bar { height: 100%; background: #2563eb; transition: width 0.4s ease; }
@@ -127,16 +127,16 @@
         const progBarEl  = panel.querySelector('.ln-progress-bar');
         const miniEl     = panel.querySelector('.ln-mini');
 
+        function setCollapsed(collapsed) {
+            panel.classList.toggle('collapsed', collapsed);
+            localStorage.setItem(collapsedKey, collapsed ? '1' : '0');
+            restack();
+        }
+
         panel.querySelector('.ln-collapse-btn').onclick = () => {
-            panel.classList.add('collapsed');
-            localStorage.setItem(collapsedKey, '1');
-            restack();
+            setCollapsed(!panel.classList.contains('collapsed'));
         };
-        miniEl.onclick = () => {
-            panel.classList.remove('collapsed');
-            localStorage.setItem(collapsedKey, '0');
-            restack();
-        };
+        miniEl.onclick = () => setCollapsed(false);
 
         const entry = { id, el: panel };
         stack.push(entry);
