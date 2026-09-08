@@ -1,0 +1,19 @@
+panel.js
+  s_4976bc167976ef::t_76a8596a53bbab 1-152
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "046084a477328eb464b63a094888fb0af0f2afa8",
+  "prompts": {},
+  "sessions": {
+    "s_4976bc167976ef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "51579d2c-4b8a-420b-a521-e300d3dc5b52",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "nikolai.nikiforov <nikolai.nikiforov@deliveryhero.com>"
+    }
+  }
+}
